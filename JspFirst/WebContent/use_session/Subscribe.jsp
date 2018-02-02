@@ -34,7 +34,7 @@
 		result ="FAIL";
 	}
 	session.invalidate();
-	response.sendRedirect("Result.jsp?RESULT="+ result);
+	//response.sendRedirect("Result.jsp?RESULT="+ result);
 	
 %>
 
