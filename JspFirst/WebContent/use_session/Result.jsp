@@ -10,6 +10,7 @@
 <body>
 <h3>회원가입 결과</h3>
 <%
+
 	if(result.equals("SUCCESS")){
 		out.println("가입되었습니다.");
 	}else{
