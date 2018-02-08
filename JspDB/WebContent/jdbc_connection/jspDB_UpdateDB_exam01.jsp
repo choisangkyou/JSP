@@ -35,33 +35,33 @@
 	
 	String sql_query = null;
 			sql_query = " update member ";
-			sql_query += " set user_no = 'dhu008'";
-			sql_query += " where user_no = 'dhu08'";
-		//out.println(sql_query);
+			sql_query += " set user_Address = '경산시 한의대학교 평생교육원(106..)'";
+			sql_query += " where user_no = 'dhu008'";
+		out.println(sql_query);
 		
 			
 	try{
 		
 		pstmt = conn.prepareStatement(sql_query);
 		rs = pstmt.executeUpdate();
-		if(rs != -1){
+		out.println("excute return:"+ rs);
+		
+		if(rs>0){
 			out.println("Update success!!");
+			out.println("<br>");
+
 		}
 		
 	}
 	catch(SQLException e){	
 		e.printStackTrace();
 		out.println("SQL 에러..");
-		}
-	
-	finally{
-		try{
-			if(pstmt != null)
-				pstmt.close();
-		}catch(SQLException e){out.println("SQL Error.. close()");}
+	}finally{
+		pstmt.close();
+		conn.close();
 	}
-	//[3]데이타베이스 연결 해제
-	conn.close();
+	
+
 	
 	
 %>
