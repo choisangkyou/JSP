@@ -12,7 +12,7 @@
 	String driverName ="com.mysql.jdbc.Driver";
 	String url ="jdbc:mysql://localhost:3306/lib";
 	String id="root";
-	String pwd ="0000";
+	String pwd ="1234";
 	Connection conn =null;
 	
 	try{
@@ -32,7 +32,7 @@
 	//[3]데이타베이스 연결 해제
 	conn.close();
 	
-	
+	//success
 %>
 
 </body>
