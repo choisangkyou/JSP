@@ -15,5 +15,6 @@ String password = (String)session.getAttribute("PASSWORD");
 	
 %>
 <H2>로그인 되었습니다.</H2>
+
 </body>
 </html>

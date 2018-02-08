@@ -1,0 +1,11 @@
+JDBC 이용한 데이타 베이스 응용 프로그램 개발 절차.
+
+1.JDBC 드라이버를 적재(Load) 즉, 메모리에 로드 적재
+<다운로드>
+https://dev.mysql.com/downloads/connector/j/
+Download Connector/J
+>mysql-connector-java-5.1.45.zip >unzip
+
+>mysql-connector-java-5.1.45-bin 복사 붙여넣기(아래)
+C:\Program Files\Java\jre1.8.0_151\lib\ext (버전은 eclipse Libraries 확인)
+com.mysql.jdbc.Driver 연결 테스트 ok
