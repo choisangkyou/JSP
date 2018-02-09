@@ -34,12 +34,21 @@
 	ResultSet rs = null;
 	
 	try{
+<<<<<<< HEAD
 		String sql_query = "select * from member";
 		pstmt = conn.prepareStatement(sql_query);
 		rs = pstmt.executeQuery();
 		
 		while(rs.next()){
 			no = rs.getString("user_No");
+=======
+		String sql_query = "select * from member order by user_name";
+		pstmt = conn.prepareStatement(sql_query);
+		rs = pstmt.executeQuery();
+				
+		while(rs.next()){
+			no = rs.getString(1);//column index or column label
+>>>>>>> branch 'master' of https://github.com/choisangkyou/JSP.git
 			name = rs.getString("user_Name");
 			add = rs.getString("user_Address");
 			out.println(no +"\t");

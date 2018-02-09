@@ -12,32 +12,10 @@
 	String driverName ="com.mysql.jdbc.Driver";
 	String url ="jdbc:mysql://localhost:3306/lib";
 	String id="root";
-<<<<<<< HEAD
-	String pwd ="1234";
-	Connection conn =null;
-	
-	try{
-	//[1] JDBC 드라이버 로드
-		Class.forName(driverName);
-	}catch (ClassNotFoundException e){
-		out.println("mysql jdbc driver가 없는데요?");
-		e.printStackTrace();
-	}
-	
-	out.println("mysql jdbc Driver를 찾아서 등록 성공!<br>");
-	
-	//[2]데이타베이스 연결
-	conn = DriverManager.getConnection(url, id, pwd);
-	out.println("DB연결 성공");
-	
-	//[3]데이타베이스 연결 해제
-	conn.close();
-	
-	//success
-=======
 	String pwd ="0000";
 	Connection conn =null;
-	
+	String no,name,add;
+		
 	try{
 	//[1] JDBC 드라이버 로드
 		Class.forName(driverName);
@@ -52,11 +30,38 @@
 	conn = DriverManager.getConnection(url, id, pwd);
 	out.println("DB연결 성공");
 	
-	//[3]데이타베이스 연결 해제
-	conn.close();
+	PreparedStatement pstmt = null;
+	int rs=0;
+	
+	String sql_query = null;
+			sql_query = " delete from member ";
+			sql_query += " where user_no = ?";
+			
+	try{
+		
+		pstmt = conn.prepareStatement(sql_query);
+		pstmt.setString(1,"dhu008");
+		
+		rs = pstmt.executeUpdate();
+		out.println("excute return:"+ rs);
+		
+		if(rs>0){
+			out.println("Delete success!!");
+			out.println("<br>");
+		}
+		
+	}
+	catch(SQLException e){	
+		e.printStackTrace();
+		out.println("SQL 에러..");
+	}finally{
+		pstmt.close();
+		conn.close();
+	}
+	
+
 	
 	
->>>>>>> branch 'master' of https://github.com/choisangkyou/JSP.git
 %>
 
 </body>

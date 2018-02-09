@@ -1,0 +1,10 @@
+eclipse git 설정.
+
+<Begin>
+1.help > eclipse marketplace >egit 추가 (githut 계정 등록 및 repository 미리 새성해둠)
+2.project Explorer > 프로젝트 추가> jsp 코딩후.
+3.프로젝트 오른쪽 마우스 클릭.> Team Share Project.
+4.Config Git Repository 경로 생성 (중요:기존 프로젝트 경로와 다르게 생성)
+5.? 표시나옴> 다시 오른쪽 마우스 클릭> 파일선택후 commit message> commit
+6.remote GitHub확인.
+
