@@ -5,11 +5,24 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Campe4Season</title>
+<style>
+	table{
+		 float: center;
+		 margin-left: auto;
+		 margin-right: auto;
+	}
+	
+	.menu_links { cursor: pointer; }
+	
+</style>
+
 <script>
+
 	function Login() {
 	   location.href="../member/login.jsp";
 	}
 </script>
+
 
 </head>
 <body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
@@ -41,7 +54,7 @@
 		<td rowspan="4">
 			<img src="images/main_06.gif" width="540" height="362" alt=""></td>
 		<td>
-			<img src="images/main_07.gif" width="90" height="43" alt="로그인"  onclick="Login()"></td>
+			<img class="menu_links" src="images/main_07.gif" width="90" height="43" alt="로그인"  onclick="Login()" ></td>
 		<td rowspan="4">
 			<img src="images/main_08.gif" width="65" height="362" alt=""></td>
 		<td>
@@ -49,7 +62,7 @@
 	</tr>
 	<tr>
 		<td>
-			<img src="images/main_09.gif" width="90" height="39" alt=""></td>
+			<img class="menu_links" src="images/main_09.gif" width="90" height="39" alt=""></td>
 		<td>
 			<img src="images/spacer.gif" width="1" height="39" alt=""></td>
 	</tr>
