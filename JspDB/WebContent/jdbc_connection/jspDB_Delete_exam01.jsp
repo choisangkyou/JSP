@@ -48,7 +48,6 @@
 		if(rs>0){
 			out.println("Delete success!!");
 			out.println("<br>");
-
 		}
 		
 	}
