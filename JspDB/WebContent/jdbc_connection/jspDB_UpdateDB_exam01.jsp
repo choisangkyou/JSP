@@ -37,8 +37,6 @@
 			sql_query = " update member ";
 			sql_query += " set user_name =?";
 			sql_query += " where user_no = ?";
-		
-		
 			
 	try{
 		
