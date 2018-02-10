@@ -6,6 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Camp4Season Login</title>
 
+<link rel="stylesheet" type="text/css" href="../common/com.css">
 <link rel="stylesheet" type="text/css" href="../common/login.css">
 <script src="../common/function.js"></script>
 

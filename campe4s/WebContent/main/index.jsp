@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+<%@ page import="campe4s.foo.*" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -7,12 +8,16 @@
 <title>Campe4Season</title>
 
 <link rel="stylesheet" type="text/css" href="../common/com.css">
+<link rel="stylesheet" type="text/css" href="../common/main.css">
 <script src="../common/function.js"></script>
-
 </head>
 <body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
-<!-- ImageReady Slices (main.psd) -->
-<table id="Table_01" width="981" height="649" border="0" cellpadding="0" cellspacing="0">
+
+
+<table id="mainTable"  width="981" height="649" border="0" cellpadding="0" cellspacing="0">
+<div id="counter">
+page count:<%=Counter.getCount() %>
+</div>
 	<tr>
 		<td colspan="5">
 			<img src="images/main_01.gif" width="980" height="10" alt=""></td>
@@ -64,6 +69,7 @@
 			<img src="images/spacer.gif" width="1" height="233" alt=""></td>
 	</tr>
 </table>
+
 <!-- End ImageReady Slices -->
 </body>
 </html>

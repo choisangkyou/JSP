@@ -1,7 +1,3 @@
 @charset "EUC-KR";
 .cursor_hand { cursor: pointer; }
-table{
-		 float: center;
-		 margin-left: auto;
-		 margin-right: auto;
-	}
+
