@@ -36,6 +36,7 @@ public class MemberDao {
 		}
 	}
 	
+	/*insert Member */
 	public void insertMember(Member member) {
 		String sql_append = "insert into member values(?,?,?,?,?,?)";
 		PreparedStatement ps =null;
@@ -67,6 +68,37 @@ public class MemberDao {
 				}
 		}
 		
+		
+	}
+	
+	/*Exist Member Check*/
+	public int getMemberExist(Member member) {
+		int result = 0;
+		//[0]:미등록,[1]등록,[-1]오류.
+		String sql = "select count(id)as cnt member where id='?'";
+		PreparedStatement ps =null;
+		ResultSet rs =null;
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, member.getId());
+			rs = ps.executeQuery();
+			result = rs.getInt(1);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			
+		}finally {
+			 if(ps !=null)
+				try {
+					ps.close();
+					conn.close();
+				} catch (SQLException e) {
+					System.out.println("Exception connection close();");
+				}
+		}
+		
+		
+		return result;
 		
 	}
 	

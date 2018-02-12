@@ -21,15 +21,24 @@ String user_email = request.getParameter("EMAIL");
 String user_mobile = request.getParameter("MOBILE");
 String user_birthday = request.getParameter("BIRTHDAY");
 
-Member member = new Member();
-member.setId(user_id);
-member.setPassword(user_password);
-member.setName(user_name);
-member.setEmail(user_email);
-member.setMobile(user_mobile);
-member.setBirthday(user_birthday);
-
-MemberDao.getInstance().insertMember(member);
+if(user_id !=null){
+	Member member = new Member();
+	member.setId(user_id);
+	member.setPassword(user_password);
+	member.setName(user_name);
+	member.setEmail(user_email);
+	member.setMobile(user_mobile);
+	member.setBirthday(user_birthday);
+	
+	int memberCount = MemberDao.getInstance().getMemberExist(member);
+	if(memberCount ==0)
+		MemberDao.getInstance().insertMember(member);
+	else
+		out.println("등록된 멤버가 존재합니다.");
+}else{
+	out.println("ID를 입력하세요.");
+	return;
+}
 
 %>
 
