@@ -5,6 +5,10 @@
 	function toLogin() {
 	   location.href="../member/login.jsp";
 	}
+
+	function toJoin() {
+		   location.href="../member/joinForm.jsp";
+		}
 	
 	function toIndex() {
 	   location.href="../main/index.jsp";

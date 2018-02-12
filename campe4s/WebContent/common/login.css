@@ -31,8 +31,11 @@
 	}
 	
 	.bottom1{
+		width:195px;
+		height:40px;
 		margin-left:50px;
 		margin-top:40px;
 		cursor: pointer;
+		
 
 	}

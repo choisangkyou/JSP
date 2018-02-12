@@ -18,9 +18,8 @@
 	<form action="MemberCheck.jsp" method=POST>
 
 		<input class="inputBox1" type="text" name=ID alt="아이디" 	value=" 아이디 입력" onfocus="this.value=''"	onblur="if(this.value =='') this.value=' 아이디 입력';">
-		<input class="inputBox2" type="text" name=PASSWORD  alt="비밀번호" value=" 비밀번호 입력" onfocus="this.value=''"	onblur="if(this.value =='') this.value=' 비밀번호 입력';">
-		<img  class="bottom1" src="images/login_10.gif"  alt="로그인" onClick="toMemberCheck();">
-	
+		<input class="inputBox2" type="password" name=PASSWORD  alt="비밀번호" value=" 비밀번호 입력" onfocus="this.value=''"	onblur="if(this.value =='') this.value=' 비밀번호 입력';">
+		<input type="image" class="bottom1" name="submit" src="images/login_10.gif" border="0" alt="Submit" />
 	</form>
 </div>
 

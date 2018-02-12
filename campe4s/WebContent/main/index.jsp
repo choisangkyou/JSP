@@ -58,7 +58,7 @@ page count:<%=Counter.getCount() %>
 	</tr>
 	<tr>
 		<td>
-			<img class="cursor_hand" src="images/main_10.gif" width="90" height="47" alt="가입하기"></td>
+			<img class="cursor_hand" src="images/main_10.gif" width="90" height="47" alt="가입하기"  onclick="toJoin()"></td>
 		<td>
 			<img src="images/spacer.gif" width="1" height="47" alt=""></td>
 	</tr>

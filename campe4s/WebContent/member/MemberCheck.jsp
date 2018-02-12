@@ -7,6 +7,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-MemberCheck ..
+<% 
+String id = request.getParameter("ID");
+String password = request.getParameter("PASSWORD");
+
+//-ID && Password match (use  db Connection)
+%>
+
 </body>
 </html>
