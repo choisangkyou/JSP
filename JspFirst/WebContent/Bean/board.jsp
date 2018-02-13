@@ -7,10 +7,15 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="/action_page.php">
-  First name: <input type="text" name="fname"><br>
-  Last name: <input type="text" name="lname"><br>
-  <input type="submit" value="Submit">
-</form>
+<jsp:useBean id="b" scope="request" class="bean.Board"/> 
+<%
+	b.setId("gz"); 
+	b.setPassword("1234");
+	b.setTitle("제목");
+	b.setContent("내용"); 
+%> 
+<jsp:forward page="boardUse.jsp"/>
+
+
 </body>
 </html>
