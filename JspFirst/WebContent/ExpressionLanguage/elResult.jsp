@@ -9,7 +9,7 @@
   </head>
    <body> 
    초기화 파라미터 이름 : ${ initParam.testParamName }<br> 
-   초기화 파라미터 나이 : ${ initParam.testParamAge +10 } <hr>
+   초기화 파라미터 나이 : ${ initParam.testParamAge } <hr>
     요청 URI : ${ pageContext.request.requestURI } <hr>
      request의 name 속성 : ${ requestScope.name } <hr>
       아이디 : ${ param.id }<br>
