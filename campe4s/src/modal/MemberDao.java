@@ -10,7 +10,7 @@ import java.sql.SQLException;
 
 public class MemberDao {
 	private static MemberDao instance;
-	private Connection conn;
+	private  Connection conn;
 	
 	String driverName ="com.mysql.jdbc.Driver";
 	String url ="jdbc:mysql://localhost:3306/campe4s";
@@ -23,7 +23,16 @@ public class MemberDao {
 		return instance;
 	}
 
-
+	/*public static void CloseConnction() {
+		if(conn !=null)
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	}
+	*/
 	private MemberDao() {
 		try{
 			Class.forName(driverName);
@@ -37,7 +46,8 @@ public class MemberDao {
 	}
 	
 	/*insert Member */
-	public void insertMember(Member member) {
+	public boolean insertMember(Member member) {
+		boolean result =false;
 		String sql_append = "insert into member values(?,?,?,?,?,?)";
 		PreparedStatement ps =null;
 		
@@ -51,9 +61,10 @@ public class MemberDao {
 			ps.setString(5, member.getEmail());
 			ps.setString(6, member.getBirthday());
 			
-			int result = ps.executeUpdate();
-			if(result>0) {
-				System.out.println("등록 되었습니다.");
+			int row = ps.executeUpdate();
+			if(row>0) {
+				result = true;
+				//System.out.println("등록 되었습니다.");
 			}
 			
 		} catch (SQLException e) {
@@ -62,36 +73,44 @@ public class MemberDao {
 			 if(ps !=null)
 				try {
 					ps.close();
-					conn.close();
+					//conn.close();
 				} catch (SQLException e) {
 					System.out.println("Exception connection close();");
 				}
 		}
 		
+		return result;
 		
 	}
 	
-	/*Exist Member Check*/
-	public int getMemberExist(Member member) {
-		int result = 0;
-		//[0]:미등록,[1]등록,[-1]오류.
-		String sql = "select count(id)as cnt member where id='?'";
+	/* Member Exist Check*/
+	public boolean getMemberExist(Member member) {
+		boolean result = false;//[true]등록,[false]미등록
+		String sql =null;
+			
+		sql = "select * From member where id=?";
+		
 		PreparedStatement ps =null;
 		ResultSet rs =null;
 		try {
+			
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, member.getId());
-			rs = ps.executeQuery();
-			result = rs.getInt(1);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+							
+			rs= ps.executeQuery();
+			
+			if(rs.next()) result = true;
+			
+		} catch (Exception e) {
 			e.printStackTrace();
+			System.out.println("SQL Error: Exist()");
 			
 		}finally {
+			
 			 if(ps !=null)
 				try {
 					ps.close();
-					conn.close();
+					//conn.close();
 				} catch (SQLException e) {
 					System.out.println("Exception connection close();");
 				}
@@ -101,5 +120,51 @@ public class MemberDao {
 		return result;
 		
 	}
+	
+	/* MemberCheck */
+	public Member MemberCheck(String id,String password) {
+		Member member = new Member();
+		String sql = "select * From member where id=? and password =?";
+		PreparedStatement ps =null;
+		ResultSet rs =null;
+		try {
+			
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, id);
+			ps.setString(2, password);
+			rs= ps.executeQuery();
+			
+			if(rs.next()) {
+				member.setId(rs.getString("id"));
+				member.setPassword(rs.getString("password"));
+				member.setName("name");
+				member.setEmail("email");
+				member.setMobile("mobile");
+				member.setBirthday("birthday");
+				//System.out.println("MemberCheck:"+ rs.getString("id") );
+			}
+		
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("SQL Error: MemberCheck()");
+			
+		}finally {
+
+			 if(ps !=null)
+				try {
+					ps.close();
+					//conn.close();
+				} catch (SQLException e) {
+					System.out.println("Exception connection close();");
+				}
+		}
+		
+		
+		return member;
+		
+	}
+	
 	
 }

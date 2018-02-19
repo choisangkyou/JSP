@@ -16,7 +16,15 @@
 
 <table id="mainTable"  width="981" height="649" border="0" cellpadding="0" cellspacing="0">
 <div id="counter">
-page count:<%=Counter.getCount() %>
+<%
+String id = (String)session.getAttribute("ID");
+String password = (String)session.getAttribute("PASSWORD");
+String name = (String)session.getAttribute("NAME");
+%>
+page count:<%=Counter.getCount() %><br>
+<%if (id !=null) {%>
+<%=id %>´Ô ¹Ý°©½À´Ï´Ù.
+<%} %>
 </div>
 	<tr>
 		<td colspan="5">

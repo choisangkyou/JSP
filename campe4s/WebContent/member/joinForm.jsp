@@ -40,6 +40,7 @@
 	<span class="small">휴대폰 번호</span>
 	</label>
 	<input type="text" name="MOBILE" id="mobile" />
+	<input type="hidden" name="BIRTHDAY" id="BIRTHDAY"  value="20180101"/>
 	
 	<button type="submit">가입하기</button>
 	<div class="spacer"></div>
