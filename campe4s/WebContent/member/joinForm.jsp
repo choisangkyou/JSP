@@ -19,7 +19,7 @@
 	<label>ID
 	<span class="small">(숫자영문혼합)</span>
 	</label>
-	<input type="text" name="ID" id="id" /><a href="IdCheck.jsp" class="checkbtn">확인</a><!-- ID 체크 루틴 추가. -->
+	<input type="text" name="ID" id="id" /><!--<a href="IdCheck.jsp" class="checkbtn">확인</a>- ID 체크 루틴 추가. -->
 	
 	<label>Password
 	<span class="small">패스워드 6자 이상</span>

@@ -25,6 +25,10 @@ String u_mobile =null;
 String u_birthday =null;
 
 
+RequestDispatcher dispatcher;
+
+//out.println("memberID:"+ member.getId());
+
 if(member.getId() !=null){
 	 u_id = member.getId();
 	 u_password = member.getPassword();
@@ -35,31 +39,24 @@ if(member.getId() !=null){
 
 	
 }else{
+	
 	out.println("ID와 비번을 다시한번 확인하세요.");
-	response.sendRedirect("fail.jsp");
+	dispatcher = request.getRequestDispatcher("login.jsp");
+	dispatcher.forward(request, response);	
+	//response.sendRedirect("fail.jsp");
 }
 
-if(id.equals(u_id) & password.equals(u_password)){
+if(id.equals(u_id) && password.equals(u_password)){
 	//out.println("아이디 비번이 일치 합니다.");
 	 
 	session.setAttribute("ID", u_id);
 	session.setAttribute("PASSWORD",u_password);
 	session.setAttribute("NAME",u_name);
 	
-	response.sendRedirect("../main/index.jsp");
+	response.sendRedirect("success.jsp");
 }
 
 %>
-id:<%=id %><br>
-pass:<%=password %><br>
-<br>
-<%=u_id %><br>
-<%=u_password %><br>
-<%=u_name %><br>
-<%=u_email %><br>
-<%=u_mobile %><br>
-<%=u_birthday %><br>
-
 
 </body>
 </html>

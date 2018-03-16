@@ -5,6 +5,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 
 
@@ -46,7 +48,7 @@ public class MemberDao {
 	}
 	
 	/*insert Member */
-	public boolean insertMember(Member member) {
+	public boolean insertMember(Member member) throws SQLException {
 		boolean result =false;
 		String sql_append = "insert into member values(?,?,?,?,?,?)";
 		PreparedStatement ps =null;
@@ -70,13 +72,8 @@ public class MemberDao {
 		} catch (SQLException e) {
 			System.out.println("SQL Error: insertMember()");
 		}finally {
-			 if(ps !=null)
-				try {
-					ps.close();
-					//conn.close();
-				} catch (SQLException e) {
-					System.out.println("Exception connection close();");
-				}
+			 if(ps !=null) {		ps.close();		}
+			 if(conn != null) {	conn.close();	 }
 		}
 		
 		return result;
@@ -84,7 +81,7 @@ public class MemberDao {
 	}
 	
 	/* Member Exist Check*/
-	public boolean getMemberExist(Member member) {
+	public boolean getMemberExist(Member member) throws SQLException {
 		boolean result = false;//[true]등록,[false]미등록
 		String sql =null;
 			
@@ -106,14 +103,10 @@ public class MemberDao {
 			System.out.println("SQL Error: Exist()");
 			
 		}finally {
-			
-			 if(ps !=null)
-				try {
-					ps.close();
-					//conn.close();
-				} catch (SQLException e) {
-					System.out.println("Exception connection close();");
-				}
+			if(rs !=null) {		rs.close();		}
+			 if(ps !=null) {		ps.close();		}
+			 if(conn != null) {	conn.close();	 }
+			 
 		}
 		
 		
@@ -122,7 +115,7 @@ public class MemberDao {
 	}
 	
 	/* MemberCheck */
-	public Member MemberCheck(String id,String password) {
+	public Member MemberCheck(String id,String password) throws SQLException {
 		Member member = new Member();
 		String sql = "select * From member where id=? and password =?";
 		PreparedStatement ps =null;
@@ -151,20 +144,58 @@ public class MemberDao {
 			System.out.println("SQL Error: MemberCheck()");
 			
 		}finally {
-
-			 if(ps !=null)
-				try {
-					ps.close();
-					//conn.close();
-				} catch (SQLException e) {
-					System.out.println("Exception connection close();");
-				}
+			if(rs !=null) {		rs.close();		}
+			 if(ps !=null) {		ps.close();		}
+			 if(conn != null) {	conn.close();	 }
 		}
 		
 		
 		return member;
 		
 	}
+	
+	
+	/* Member select All */
+	public List<Member> selectAll() throws SQLException {
+		
+		String sql = "select * From member ";
+		
+		List<Member> list = new ArrayList<Member>();
+		PreparedStatement ps =null;
+		ResultSet rs =null;
+		try {
+			
+			ps = conn.prepareStatement(sql);
+			rs= ps.executeQuery();
+			while(rs.next()) {
+				Member member = new Member();
+				member.setId(rs.getString("id"));
+				member.setPassword(rs.getString("password"));
+				member.setName("name");
+				//member.setEmail("email");
+				//member.setMobile("mobile");
+				//member.setBirthday("birthday");
+				list.add(member);
+				
+			}
+			
+						
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("SQL Error: select All()");
+			
+		}finally {
+			if(rs !=null) {		rs.close();		}
+			 if(ps !=null) {		ps.close();		}
+			 if(conn != null) {	conn.close();	 }
+			 
+		}
+		
+		
+		return list;
+		
+	}
+	
 	
 	
 }

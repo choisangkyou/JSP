@@ -4,11 +4,21 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>회원 등록</title>
+<title>회원 정보</title>
 </head>
 <body>
-<h2>회원정보가 정상 등록 되었습니다.</h2>
-<h4>다시한번 로그인해 주세요.</h4>
-<a href="login.jsp">로그인하기</a>
+<%
+	request.setCharacterEncoding("UTF-8");
+	String id = (String)session.getAttribute("ID");
+	String password = (String)session.getAttribute("PASSWORD");
+	String name = (String)session.getAttribute("NAME");
+	
+%>
+ID:<%=id %><br>
+PW:<%=password.hashCode() %><br>
+Name:<%=name %><br>
+<%String refURL = request.getHeader("referer");%>
+<%=refURL %><br>
+<input type="button" value="처음으로" onClick="location.href='../main/index.jsp'">
 </body>
 </html>

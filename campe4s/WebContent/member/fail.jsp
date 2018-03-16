@@ -7,8 +7,9 @@
 <title>가입 성공</title>
 </head>
 <body>
-<h2>회원가입 완료!</h2>
+<h2>실패</h2>
 
-<a href="login.jsp">로그인 하기</a>
+<input type="button" value="처음으로" onClick="location.href='../main/index.jsp'">
+
 </body>
 </html>

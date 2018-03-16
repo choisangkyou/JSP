@@ -21,11 +21,17 @@ String id = (String)session.getAttribute("ID");
 String password = (String)session.getAttribute("PASSWORD");
 String name = (String)session.getAttribute("NAME");
 %>
-page count:<%=Counter.getCount() %><br>
+
 <%if (id !=null) {%>
 <%=id %>님 반갑습니다.
 <%} %>
+
+<!-- page count:-->
+<%//=Counter.getCount() %><br>
+<a href="member/memberList.jsp">회원목록</a>
 </div>
+
+
 	<tr>
 		<td colspan="5">
 			<img src="images/main_01.gif" width="980" height="10" alt=""></td>
@@ -79,5 +85,6 @@ page count:<%=Counter.getCount() %><br>
 </table>
 
 <!-- End ImageReady Slices -->
+<input type="button" value="회원목록" onclick="location.href='../member/memberList.jsp'">
 </body>
 </html>
